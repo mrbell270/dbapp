@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Orders</title>
+</head>
+<body>
+<h1 th:inline="text">Orders</h1>
+<div th:hidden="true"><h2 th:inline="text">Token <span th:text="${param.token[0]}"/></h2></div>
+<table>
+    <tr>
+        <th>UserID</th>
+        <th>OrderID</th>
+    </tr>
+    <tr th:each="order : ${orders}">
+        <td><span th:text="${order.userid}"/></td>
+        <td>
+            <a th:href="@{/orders/{orderid}(orderid=${order.id},token=${param.token[0]})}">
+                <span th:text="${order.id}"/>
+            </a>
+        </td>
+    </tr>
+</table>
+<hr width="75%" align="left"/>
+<form th:action="@{/order(token=${param.token[0]})}" th:method="post" >
+    <div><input type="submit" value="Create New Order"/></div>
+</form>
+<hr width="75%" align="left"/>
+<form th:action="@{/orders(token=${param.token[0]})}" th:method="delete" >
+    <div><label> Order# <input type="text" name="orderid"/> </label></div>
+    <div><input type="submit" value="Delete order"/></div>
+</form>
+<hr width="75%" align="left"/>
+<p><a th:href="@{/home(token=${param.token[0]})}">Home</a></p>
+</body>
+</html>

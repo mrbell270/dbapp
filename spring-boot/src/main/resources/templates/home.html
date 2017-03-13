@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Spring Security Example</title>
+</head>
+<body>
+<h1>Home</h1>
+<div th:hidden="true"><h2 th:inline="text">Token <span th:text="${param.token[0]}"/></h2></div>
+<p><a th:href="@{/orders(token=${param.token[0]})}">Orders</a></p>
+<p><a th:href="@{/goods(token=${param.token[0]})}">Goods</a></p>
+<p><a th:href="@{/billings(token=${param.token[0]})}">Billings</a></p>
+</body>
+</html>

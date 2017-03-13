@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Goods</title>
+</head>
+<body>
+<h1>All Goods</h1>
+<div th:hidden="true"><h2 th:inline="text">Token <span th:text="${param.token[0]}"/></h2></div>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Cost</th>
+    </tr>
+    <tr th:each="good : ${goods}">
+        <td><span th:text="${good.id}"/></td>
+        <td><span th:text="${good.name}"/></td>
+        <td><span th:text="${good.description}"/></td>
+        <td><span th:text="${good.cost}"/></td>
+    </tr>
+</table>
+<hr width="75%" align="left"/>
+<form th:action="@{/goods(token=${param.token[0]})}" method="post">
+    <div><label> Goods Name : <input type="text" name="name"/> </label></div>
+    <div><label> Cost: <input type="text" name="cost"/> </label></div>
+    <div><label> Description: <input type="text" name="description"/> </label></div>
+    <div><input type="submit" value="Create goods"/></div>
+</form>
+<hr width="75%" align="left"/>
+<form th:action="@{/goods}" th:method="delete">
+    <input type="hidden" name="_method" value="delete"/>
+    <input type="hidden" th:value="${param.token[0]}" name="token"/>
+    <div><label> Goods ID : <input type="text" name="id"/> </label></div>
+    <div><input type="submit" value="Delete goods"/></div>
+</form>
+<hr width="75%" align="left"/>
+<p><a th:href="@{/home(token=${param.token[0]})}">Home</a></p>
+</body>
+</html>

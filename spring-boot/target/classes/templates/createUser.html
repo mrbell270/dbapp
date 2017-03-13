@@ -1,0 +1,14 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Create new user</title>
+</head>
+<body>
+<form th:action="@{/user}" method="post">
+    <div><label> User Name : <input type="text" name="userName"/> </label></div>
+    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div><label> Description of user: <input type="test" name="description"/> </label></div>
+    <div><input type="submit" value="Create user"/></div>
+</form>
+</body>
+</html>

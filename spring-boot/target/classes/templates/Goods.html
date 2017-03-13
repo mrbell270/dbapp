@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Goods</title>
+</head>
+<body>
+<h1 th:inline="text">Goods of order#<span th:text="${orderid}"/></h1>
+<div th:hidden="true"><h2 th:inline="text">Token <span th:text="${param.token[0]}"/></h2></div>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Cost</th>
+    </tr>
+    <tr th:each="good : ${goods}">
+        <td><span th:text="${good.id}"/></td>
+        <td><span th:text="${good.name}"/></td>
+        <td><span th:text="${good.description}"/></td>
+        <td><span th:text="${good.cost}"/></td>
+    </tr>
+</table>
+<hr width="75%" align="left"/>
+<form th:action="@{/orders/{orderid}/goods(orderid=${orderid},token=${param.token[0]})}" th:method="post" >
+    <div><label> Goods# <input type="text" name="goodsid"/> </label></div>
+    <div><input type="submit" value="Add goods to order"/></div>
+</form>
+<hr width="75%" align="left"/>
+<form th:action="@{/orders/{orderid}/goods(orderid=${orderid},token=${param.token[0]})}" th:method="delete" >
+    <div><label> Goods# <input type="text" name="goodsid"/> </label></div>
+    <div><input type="submit" value="Delete goods from order"/></div>
+</form>
+<hr width="75%" align="left"/>
+<form th:action="@{/orders/{orderid}/billing(orderid=${orderid},token=${param.token[0]})}" th:method="post" >
+    <div><input type="submit" value="Create billing"/></div>
+</form>
+<hr width="75%" align="left"/>
+<p><a th:href="@{/home(token=${param.token[0]})}">Home</a></p>
+</body>
+</html>

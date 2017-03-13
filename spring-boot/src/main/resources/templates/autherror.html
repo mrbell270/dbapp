@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>autherror</title>
+</head>
+<body>
+<h1>Auth error.</h1>
+<h2><span th:text="${param.err[0]}"/></h2>
+<hr width="75%" align="left"/>
+<p>Click <a th:href="@{/login}">here</a> to get to Login page.</p>
+</body>
+</html>

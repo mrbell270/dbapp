@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Billings</title>
+</head>
+<body>
+<h1 th:inline="text">Billings</h1>
+<div th:hidden="true"><h2 th:inline="text">Token <span th:text="${param.token[0]}"/></h2></div>
+<table>
+    <tr>
+        <th>UserID</th>
+        <th>OrderID</th>
+        <th>Cost</th>
+    </tr>
+    <tr th:each="billing : ${billings}">
+        <td><span th:text="${billing.userid}"/></td>
+        <td>
+            <a th:href="@{/orders/{orderid}(orderid=${billing.id},token=${param.token[0]})}">
+                <span th:text="${billing.id}"/>
+            </a>
+        </td>
+        <td><span th:text="${billing.cost}"/></td>
+    </tr>
+</table>
+<hr width="75%" align="left"/>
+<p><a th:href="@{/home(token=${param.token[0]})}">Home</a></p>
+</body>
+</html>

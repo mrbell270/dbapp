@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>dbsuccess</title>
+</head>
+<body>
+<h1> Database updated.</h1>
+<h2 th:inline="text"><span th:text="${param.code[0]}"/></h2>
+<div th:hidden="true"><h2 th:inline="text">Token <span th:text="${param.token[0]}"/></h2></div>
+<hr width="75%" align="left"/>
+<p>Click <a th:href="@{/home(token=${param.token[0]})}">here</a> to get to Home page.</p>
+</body>
+</html>
